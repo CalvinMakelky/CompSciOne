@@ -1,0 +1,120 @@
+
+
+#include <iostream>
+
+#include <string>
+#include <random>
+
+	using namespace std;
+	
+	int INCREMENT = 5;
+	int roll()
+	{
+		static random_device rd;
+		static mt19937 engine(rd());
+		std::uniform_int_distribution<>die(1, 6);
+		return die(engine);
+	}
+	
+	
+	int main()
+	{
+		// variables
+		int die = roll();
+		int myScore = 0;
+		int devilScore = 0;
+		int turn_score = 0;
+		char choice;
+		bool change = false;
+		bool weHaveAWinner = false;
+		cout << "Welcome to Devil's Dice! Please select from the following menu: ";
+	
+		//Enclosing infinite loop, only can exit on return
+		while (true) {
+			//Player turn loop, can exit with breaks to main loop
+			while (true){
+				cout << "\nRoll [r], Hold [h], or Quit [q].";
+				cin >> choice;
+
+				if (choice == 'r'){
+					die = roll();
+					if (die > 1){
+						cout << "You rolled a " << die << "." << endl;
+						turn_score += die;
+						if (turn_score + myScore >= 100) {
+							cout << "You win!" << endl;
+							//Winning condition met. Game over and return.
+							return 0;
+						}
+						cout << "You will add " << turn_score << " points if you hold now. ";
+					}
+					else{
+						cout << "You rolled a 1. Your turn ends. You lose your points and are back to " << myScore << " points." << endl;
+						turn_score = 0;
+						//End turn. Breaks secondary loop.
+						break;
+					}
+				}
+
+				if (choice == 'h')   {
+					myScore += turn_score;
+					cout << "Your total score is now " << myScore << "." << endl;
+					turn_score = 0;
+					change = true;
+					//End turn. Breaks secondary loop.
+					break;
+				}  //needs to go to Devil now
+
+
+				if (choice == 'q')
+				{
+					cout << "\n\tThanks for playing! ";
+					return 0;
+				}
+
+				else if (choice > 'r' || choice < 'p')
+				{
+					cout << "Please select from the choices listed.";
+				}
+
+			}
+
+			while (true){
+				//Devil's turn loop, can exit with breaks to main loop
+				if (turn_score <= 19){
+					choice = 'r';
+					if (choice == 'r'){
+						die = roll();
+						if (die > 1){
+							cout << "\nThe Devil rolls a " << die << "." << endl;
+							turn_score += die;
+							if (turn_score + devilScore >= 100) {
+								//Winning condition met. Game over and return.
+								cout << "The Devil wins...you die." << endl;
+								return 0;
+							}
+						}
+						else{
+							cout << "The Devil rolls a 1. He loses his points and is back to " << devilScore << " points. Now it's your turn!" << endl;
+							turn_score = 0;
+							change = false;
+							//End turn. Breaks secondary loop.
+							break;
+						}
+
+					}
+				}
+				else{
+
+					cout << "The Devil chooses to pass. ";
+					choice = 'h';
+					cout << "The Devil now has " << devilScore << " points." << endl;
+					devilScore += turn_score;
+					turn_score = 0;
+					change = false;
+					//End turn. Breaks secondary loop.
+					break;
+				}
+			}
+		}
+	}
