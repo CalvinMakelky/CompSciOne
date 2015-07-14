@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+
+void randomGenerator(); // declaration
+void area_of_triangle(float width, float height); // declaration
+
+int main()
+{
+	
+	randomGenerator();
+	area_of_triangle(20, 5);
+
+	system("PAUSE");
+	return 0;
+
+}
+
+void area_of_triangle(float width, float height)
+{
+	float area = (width*height) / 2;
+	std::cout << area << std::endl;
+	
+}
+
+void randomGenerator() // def
+{
+	std::ifstream in("Text.txt"); //input
+	std::ofstream out("out.txt"); // output
+	int num, num2, num3;
+	while (in >> num)
+	{
+		num2 = num* (rand() % (10 - 6 + 1) + 6);
+		num3 = num* (rand() % 5 + 1);
+		if (num % 2 == 0)
+		{
+			std::cout << num2 << std::endl;
+			out << num2 << std::endl;
+		}
+			std::cout << num3 << std::endl;
+			out << num3 << std::endl;
+		}
+	}
+
