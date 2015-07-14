@@ -1,0 +1,19 @@
+#include <iostream>
+#include <string>
+
+void randomGenerator();
+
+int main()
+{
+	randomGenerator(10);
+
+	system("PAUSE");
+	return 0;
+
+}
+
+void randomGenerator(int n) // def
+{
+	for (int i = 0; i < n; i++)
+		std::cout << rand() % 100 << std::endl;
+}
