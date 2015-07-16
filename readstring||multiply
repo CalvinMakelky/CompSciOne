@@ -26,7 +26,7 @@ void multiply()
 		in >> a;
 		in1 >> b;
 		x = a*b;
-		out << "("<< a << "*" << b<<  "="<< x << ")" << endl;
+		out << "("<< a << "*" << b<<  " = "<< x << ")" << endl;
 
 	}
 		
