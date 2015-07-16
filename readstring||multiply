@@ -1,0 +1,46 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+void read_string_keyboard();
+void multiply();
+
+int main()
+{
+	//read_string_keyboard();
+	multiply();
+	
+	system("PAUSE");	
+
+}
+void multiply()
+{
+	int a, b, x;
+	ifstream in("file1.txt");//input
+	ifstream in1("file2.txt");//input
+	ofstream out("result.txt"); //output
+	for (int i = 0; i < 7; i++)
+	{
+		in >> a;
+		in1 >> b;
+		x = a*b;
+		out << "("<< a << "*" << b<<  "="<< x << ")" << endl;
+
+	}
+		
+}
+void read_string_keyboard()
+{
+	ifstream in("Text.txt"); //input
+	string x; 
+	getline(in, x);
+	int s;
+	s = 7;
+	for (int i = s; i > 0; i--)
+	{
+		cout << x.at(i - 1);
+	}
+	cout << endl;
+}
