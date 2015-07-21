@@ -1,0 +1,61 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+void fun1();
+int fun2(int min, int max);
+int fibonacci(int index);
+
+int main()
+{
+	cout << fibonacci(8) << endl;
+	fun1();
+	maxnum();
+	system("PAUSE");
+	return 0;
+
+}
+
+void fun1()
+{
+	int x = fun2(5,100);
+	if (x>= 80 && x <= 100){
+		cout << "A" << endl;
+	}
+	else if (x>= 60  && x <= 80){
+		cout << "B " << endl;
+	}
+	else if (x>= 40 &&  x <= 60){
+		cout << "C " << endl;
+	}
+	else if (x>= 20 &&  x<= 40){
+		cout << "D" << endl;
+	}
+	else if (x>= 5 && x <= 20)
+		cout << "E" << endl;
+	}
+
+int fun2(int min, int max) // def
+{
+	int a = rand() % (max - min + 1) + min;
+	cout << a << endl;
+	return a;
+}
+
+
+int fibonacci(int index)
+{
+	if (index == 0)
+	{
+		return 0;
+	}
+	if (index == 1)
+	{
+	return 1;
+	}
+	return fibonacci(index - 1) + fibonacci(index - 2);
+	
+}
+
