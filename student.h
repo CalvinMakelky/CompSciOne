@@ -10,10 +10,10 @@ private:
 	std::string email;
 	std::string address;
 	std::string anumber;
-	student();
+	student(); // private constructor
 public:
 	student(std::string, std::string);
-	student(std::string, std::string, std::string, std::string);
+	student(std::string, std::string, std::string, std::string); // public constructor
 	std::string getname();
 	std::string getemail();
 	std::string getaddress();
