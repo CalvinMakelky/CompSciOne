@@ -14,8 +14,8 @@ int main()
 	}
 	if (x > y)
 		cout << "Player 1 Wins" << endl;
-	else if 
-		cout << (y > x) << "Player 2 Wins" << endl;
+	else if (y>x)
+		cout << "Player 2 Wins" << endl;
 	else
 		cout << "Tie" << endl;
 	
